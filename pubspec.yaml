@@ -42,8 +42,11 @@ dependencies:
   flutter_screenutil: ^5.9.0
     # Flutter library to load and cache network images.
   cached_network_image: ^3.3.1
-    # reading and writing simple key-value pairs
-
+    #  Flutter library to get location.
+  geolocator: ^12.0.0
+  #  Flutter library to check the equality of objects .
+  equatable: ^2.0.5
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
