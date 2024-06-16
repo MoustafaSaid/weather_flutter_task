@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:weather_flutter_task/core/di/injection_container.dart';
-import 'package:weather_flutter_task/core/request_states.dart';
 import 'package:weather_flutter_task/features/home/presentation/controller/home_cubit.dart';
 import 'package:weather_flutter_task/features/home/presentation/controller/home_states.dart';
 import 'package:weather_flutter_task/features/home/presentation/widgets/app_bar_title_widget.dart';
