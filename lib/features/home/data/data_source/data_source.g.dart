@@ -13,7 +13,7 @@ class _HomeDataSource implements HomeDataSource {
     this._dio, {
     this.baseUrl,
   }) {
-    baseUrl ??= 'https://api.openweathermap.org/';
+    baseUrl ??= 'https://api.weatherapi.com/v1/';
   }
 
   final Dio _dio;
@@ -21,15 +21,10 @@ class _HomeDataSource implements HomeDataSource {
   String? baseUrl;
 
   @override
-  Future<WeatherResponse> getCurrentLocationWeather({
-    required double lat,
-    required double lon,
-  }) async {
+  Future<WeatherResponse> getCurrentLocationWeather(
+      {required String location}) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'lat': lat,
-      r'lon': lon,
-    };
+    final queryParameters = <String, dynamic>{r'q': location};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio
@@ -40,7 +35,7 @@ class _HomeDataSource implements HomeDataSource {
     )
             .compose(
               _dio.options,
-              'data/3.0/onecall&appid=cf4ae34157ebf42a82db07b8aec4f40c',
+              'forecast.json?key=aeb7049c37c44deda43100845241306&days=8&aqi=no&alerts=no',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -67,7 +62,7 @@ class _HomeDataSource implements HomeDataSource {
     )
             .compose(
               _dio.options,
-              'geo/1.0/direct?&appid=cf4ae34157ebf42a82db07b8aec4f40c',
+              'forecast.json?key=aeb7049c37c44deda43100845241306&days=8&aqi=no&alerts=no',
               queryParameters: queryParameters,
               data: _data,
             )

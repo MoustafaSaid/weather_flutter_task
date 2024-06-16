@@ -16,7 +16,7 @@ class WeatherResponse extends Equatable {
   final List<Daily>? daily;
   final List<Alert>? alerts;
 
-  WeatherResponse({
+  const WeatherResponse({
     this.lat,
     this.lon,
     this.timezone,
@@ -60,7 +60,7 @@ class Current extends Equatable {
   final double? windGust;
   final List<Weather>? weather;
 
-  Current({
+  const Current({
     this.dt,
     this.sunrise,
     this.sunset,
@@ -107,7 +107,7 @@ class Minutely extends Equatable {
   final int? dt;
   final double? precipitation;
 
-  Minutely({
+  const Minutely({
     this.dt,
     this.precipitation,
   });
@@ -142,7 +142,7 @@ class Hourly extends Equatable {
   final List<Weather>? weather;
   final double? pop;
 
-  Hourly({
+  const Hourly({
     this.dt,
     this.temp,
     this.feelsLike,
@@ -211,7 +211,7 @@ class Daily extends Equatable {
   final double? rain;
   final double? uvi;
 
-  Daily({
+  const Daily({
     this.dt,
     this.sunrise,
     this.sunset,
@@ -272,7 +272,7 @@ class Temp extends Equatable {
   final double? eve;
   final double? morn;
 
-  Temp({
+  const Temp({
     this.day,
     this.min,
     this.max,
@@ -296,7 +296,7 @@ class FeelsLike extends Equatable {
   final double? eve;
   final double? morn;
 
-  FeelsLike({
+  const FeelsLike({
     this.day,
     this.night,
     this.eve,
@@ -318,7 +318,7 @@ class Weather extends Equatable {
   final String? description;
   final String? icon;
 
-  Weather({
+  const Weather({
     this.id,
     this.main,
     this.description,
@@ -343,7 +343,7 @@ class Alert extends Equatable {
   final String? description;
   final List<String>? tags;
 
-  Alert({
+  const Alert({
     this.senderName,
     this.event,
     this.start,

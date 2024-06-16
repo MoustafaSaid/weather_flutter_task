@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 import 'package:weather_flutter_task/core/network/failure/failure.dart';
 import 'package:weather_flutter_task/features/home/data/data_source/data_source.dart';
-import 'package:weather_flutter_task/features/home/data/models/weather_model.dart';
+import 'package:weather_flutter_task/features/home/data/models/weather_response_model.dart';
 import 'package:weather_flutter_task/features/home/domain/repo/home_repo.dart';
 
 class HomeRepoImpl implements HomeRepo {
@@ -11,8 +12,8 @@ class HomeRepoImpl implements HomeRepo {
     try {
       final result = await homeDataSource.getCityWeather(cityName: cityName);
       return Right(result);
-    } on ServerFailure catch (e) {
-      return Left(e);
+    } on DioException catch (e) {
+      return Left(ServerFailure(e.message ?? ""));
     }
   }
 
@@ -24,7 +25,7 @@ class HomeRepoImpl implements HomeRepo {
   Future<Either<Failure, WeatherResponse>> getCurrentLocationWeather(
       {required double lat, required double lon}) async {
     try {
-      final result = await homeDataSource.getCurrentLocationWeather(lat: lat, lon: lon);
+      final result = await homeDataSource.getCurrentLocationWeather(location: "$lat,$lon");
       return Right(result);
     } on ServerFailure catch (e) {
       return Left(e);
